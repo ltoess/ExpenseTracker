@@ -22,7 +22,6 @@ public class Expense {
     }
 
 
-
     /* helper methods that account for a user saving a description with a tab character
     *  as to not mess up the parsing system. replaces tab character "/t" with "//t" as 
     *  well as newline character, return, and backslash
@@ -55,7 +54,6 @@ public class Expense {
     }
 
 
-
     public String toTsv() {
         // amount \t category \t date(YYYY-MM-DD) \t description(with escaped tabs/newlines)
         return amount + "\t" + category.name() + "\t" + date.format(FMT) + "\t" + escape(description);
@@ -74,9 +72,6 @@ public class Expense {
     }
     
 
-
-
-
     public double getAmount() {
         return amount; 
     }
@@ -85,13 +80,14 @@ public class Expense {
         return description; 
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category; 
     }
 
-    public String getDate() {
-        return date.getMonthValue() + "-" + date.getDayOfMonth() +"-" + date.getYear(); 
+    public LocalDate getDate() {
+        return date;
     }
+    
 
     public String toString() {
         return String.format("%s | %s | $%.2f | %s",
