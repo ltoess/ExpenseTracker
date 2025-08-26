@@ -1,9 +1,11 @@
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FileManager {
@@ -29,7 +31,7 @@ public class FileManager {
         if(!Files.exists(path))
             return list; 
 
-        try(BufferedReader reader = Files.newBufferedReader(path, StandardCharsets.UTF_*)){
+        try(BufferedReader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)){
             String line; 
             boolean first = true;
             while((line = reader.readLine()) != null) {
