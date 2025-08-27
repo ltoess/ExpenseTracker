@@ -10,6 +10,8 @@ import java.util.List;
 
 public class FileManager {
 
+    // simplifies file methods 
+
     private static final String HEADER = "amount\tcategory\tdate\tdescription";
 
     public void save(List<Expense> expenses, Path path){
