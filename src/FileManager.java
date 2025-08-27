@@ -10,7 +10,7 @@ import java.util.List;
 
 public class FileManager {
 
-    // simplifies file methods 
+    // simplifies file methods and puts them in their own class 
 
     private static final String HEADER = "amount\tcategory\tdate\tdescription";
 
