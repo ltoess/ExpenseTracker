@@ -25,14 +25,12 @@ public class App {
         }
 
         while(true) {
-            // printmenu method 
+            printMenu();
         }
 
         
 
     }
-
-
     
     private static void printMenu() {
         System.out.println();
@@ -47,4 +45,33 @@ public class App {
         System.out.println("0) Exit");
         System.out.print("Choose: ");
     }
+
+    private static void addExpenseFlow(ExpenseManager manager, Scanner scan) {
+
+    }
+
+    private static void listExpenses(ExpenseManager manager) {
+
+    }
+
+    private static void removeExpenseFlow(ExpenseManager manager, Scanner scan) {
+
+    }
+
+    private static void totalsByCategoryFlow(ExpenseManager manager, Scanner scan) {
+
+    }
+
+    private static void montlyTotalFlow(ExpenseManager manager, Scanner scan) {
+
+    }
+
+    private static void saveFlow(ExpenseManager manager, FileManager fm, Scanner scan) {
+
+    }
+
+    private static void loadFlow(ExpenseManager manager, FileManager fm, Scanner scan) {
+
+    }
+
 }
