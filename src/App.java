@@ -1,5 +1,6 @@
 
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
@@ -47,11 +48,39 @@ public class App {
     }
 
     private static void addExpenseFlow(ExpenseManager manager, Scanner scan) {
+        try {
+            System.out.print("Amount (e.g., 12.50): ");
+            double amount = Double.parseDouble(sc.nextLine().trim());
 
+            System.out.print("Category " + java.util.Arrays.toString(Category.values()) + ": ");
+            Category category = Category.fromString(sc.nextLine());
+
+            System.out.print("Date (YYYY-MM-DD) [leave blank for today]: ");
+            String dateStr = sc.nextLine().trim();
+            LocalDate date = dateStr.isEmpty() ? LocalDate.now() : LocalDate.parse(dateStr);
+
+            System.out.print("Description (optional): ");
+            String desc = sc.nextLine();
+
+            Expense e = new Expense(amount, category, desc, date);
+            manager.addExpense(e);
+            System.out.println("Added: " + e);
+        } catch (Exception e) {
+            System.out.println("Failed to add expense: " + e.getMessage());
+        }
     }
 
     private static void listExpenses(ExpenseManager manager) {
-
+        List<Expense> all = manager.getAllExpenses(); 
+        if (all.isEmpty()) {
+            System.out.println("No expenses yet.");
+            return; 
+        }
+        System.out.println("Index | Expense");
+        for (int i = 0; i < all.size(); i++) {
+            System.out.printf("%5d | %s%n", i, all.get(i).toString());
+        }
+        System.out.printf("Total: $%.2f%n", manager.getTotal());
     }
 
     private static void removeExpenseFlow(ExpenseManager manager, Scanner scan) {

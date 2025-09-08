@@ -9,17 +9,17 @@ public class ExpenseManager {
 
     private final List<Expense> expenses = new ArrayList<>();  
     
-    private void addExpense(Expense e) {
+    public void addExpense(Expense e) {
         expenses.add(e);
     }
 
-    private Boolean removeExpense(int i) {
+    public Boolean removeExpense(int i) {
         if(i < 0 || i >= expenses.size()) return false; 
         expenses.remove(i);
         return true; 
     }
 
-    private List<Expense> getAllExpenses() {
+    public List<Expense> getAllExpenses() {
         return Collections.unmodifiableList(expenses);
     }
 
