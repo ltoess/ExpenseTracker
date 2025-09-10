@@ -50,17 +50,17 @@ public class App {
     private static void addExpenseFlow(ExpenseManager manager, Scanner scan) {
         try {
             System.out.print("Amount (e.g., 12.50): ");
-            double amount = Double.parseDouble(sc.nextLine().trim());
+            double amount = Double.parseDouble(scan.nextLine().trim());
 
             System.out.print("Category " + java.util.Arrays.toString(Category.values()) + ": ");
-            Category category = Category.fromString(sc.nextLine());
+            Category category = Category.fromString(scan.nextLine());
 
             System.out.print("Date (YYYY-MM-DD) [leave blank for today]: ");
-            String dateStr = sc.nextLine().trim();
+            String dateStr = scan.nextLine().trim();
             LocalDate date = dateStr.isEmpty() ? LocalDate.now() : LocalDate.parse(dateStr);
 
             System.out.print("Description (optional): ");
-            String desc = sc.nextLine();
+            String desc = scan.nextLine();
 
             Expense e = new Expense(amount, category, desc, date);
             manager.addExpense(e);
@@ -87,8 +87,8 @@ public class App {
         listExpenses(manager);
         System.out.print("Enter index to remove: ");
         try { 
-            int index = Integer.parseInt(sc.nextLine().trim()); 
-            boolean valid = manager.removeExpenseByIndex(index); 
+            int index = Integer.parseInt(scan.nextLine().trim()); 
+            boolean valid = manager.removeExpense(index); 
             System.out.println(valid ? "Removed. " : "Invalid index." );
         } catch (NumberFormatException e) {
             System.out.println("Not a number.");
@@ -96,17 +96,17 @@ public class App {
     }
 
     private static void totalsByCategoryFlow(ExpenseManager manager, Scanner scan) {
-        System.out.print("Category: " + Arrays.toString(Category.values()) + ":"); 
-        Category category = Category.fromString(sc.nextLine());
+        System.out.print("Category: " + java.util.Arrays.toString(Category.values()) + ":"); 
+        Category category = Category.fromString(scan.nextLine());
         double total = manager.getTotalByCategory(category); 
     }
 
     private static void montlyTotalFlow(ExpenseManager manager, Scanner scan) {
         try {
             System.out.print("Year: (e.g., 2025): "); 
-            int year = Integer.parseInt(sc.nextLine().trim());
+            int year = Integer.parseInt(scan.nextLine().trim());
             System.out.print("Month (1-12): "); 
-            int month = Integer.parseInt(sc.nextLine().trim()); 
+            int month = Integer.parseInt(scan.nextLine().trim()); 
             double total = manager.getMonthlyTotal(month, year);
             System.out.printf("Total for %04d-%02d: $%.2f%n", year, month, total); 
         } catch (NumberFormatException e) {
