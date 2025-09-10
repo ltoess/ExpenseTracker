@@ -24,7 +24,7 @@ public class FileManager {
             }
         } catch(IOException e) {
             System.out.println("File not found");
-            System.exit(0);
+
         }
     }
 
@@ -48,7 +48,7 @@ public class FileManager {
             }
         } catch(IOException e) {
             System.out.println("File not found");
-            System.exit(0);
+
         }
 
         return list; 

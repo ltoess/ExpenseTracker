@@ -98,11 +98,20 @@ public class App {
     private static void totalsByCategoryFlow(ExpenseManager manager, Scanner scan) {
         System.out.print("Category: " + Arrays.toString(Category.values()) + ":"); 
         Category category = Category.fromString(sc.nextLine());
-        double total = manager.getTotalByCategory(category); // pause
+        double total = manager.getTotalByCategory(category); 
     }
 
     private static void montlyTotalFlow(ExpenseManager manager, Scanner scan) {
-
+        try {
+            System.out.print("Year: (e.g., 2025): "); 
+            int year = Integer.parseInt(sc.nextLine().trim());
+            System.out.print("Month (1-12): "); 
+            int month = Integer.parseInt(sc.nextLine().trim()); 
+            double total = manager.getMonthlyTotal(month, year);
+            System.out.printf("Total for %04d-%02d: $%.2f%n", year, month, total); 
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid year/month."); 
+        }
     }
 
     private static void saveFlow(ExpenseManager manager, FileManager fm, Scanner scan) {
