@@ -96,7 +96,9 @@ public class App {
     }
 
     private static void totalsByCategoryFlow(ExpenseManager manager, Scanner scan) {
-
+        System.out.print("Category: " + Arrays.toString(Category.values()) + ":"); 
+        Category category = Category.fromString(sc.nextLine());
+        double total = manager.getTotalByCategory(category); // pause
     }
 
     private static void montlyTotalFlow(ExpenseManager manager, Scanner scan) {

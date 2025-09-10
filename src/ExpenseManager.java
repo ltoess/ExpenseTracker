@@ -32,14 +32,13 @@ public class ExpenseManager {
         YearMonth search = YearMonth.of(year, month);
         return expenses.stream().filter(e -> YearMonth.from(e.getDate()).equals(search)).mapToDouble(Expense::getAmount).sum();
     }
-    
 
-    // private void getMonthlyTotal(???)
+    public double getTotal() {
+        return expenses.stream().mapToDouble(Expense::getAmount).sum(); 
+    }
 
-    // private void listAllExpenses()
-
-    
-
-
+    public double getTotalByCategory(Category category) {
+        return expenses.stream().filter(e -> e.getCategory() == category).mapToDouble(Expense::getAmount).sum(); 
+    }
 
 }
