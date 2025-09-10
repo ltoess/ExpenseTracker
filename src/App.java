@@ -84,7 +84,15 @@ public class App {
     }
 
     private static void removeExpenseFlow(ExpenseManager manager, Scanner scan) {
-
+        listExpenses(manager);
+        System.out.print("Enter index to remove: ");
+        try { 
+            int index = Integer.parseInt(sc.nextLine().trim()); 
+            boolean valid = manager.removeExpenseByIndex(index); 
+            System.out.println(valid ? "Removed. " : "Invalid index." );
+        } catch (NumberFormatException e) {
+            System.out.println("Not a number.");
+        }
     }
 
     private static void totalsByCategoryFlow(ExpenseManager manager, Scanner scan) {
