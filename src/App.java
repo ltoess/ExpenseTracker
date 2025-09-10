@@ -115,11 +115,34 @@ public class App {
     }
 
     private static void saveFlow(ExpenseManager manager, FileManager fm, Scanner scan) {
-
+        System.out.print("Filename [default: expenses.tsv]: ");
+        String name = scan.nextLine().trim(); 
+        if(name.isEmpty()) 
+            name = "expenses.tsv"; 
+        try {
+            fm.save(manager.getAllExpenses(), Path.of(name));
+            System.out.println("Saved to: " + name);
+        } catch (Exception e) {
+            System.out.println("Save failed: " + e.getMessage()); 
+        }
     }
 
     private static void loadFlow(ExpenseManager manager, FileManager fm, Scanner scan) {
-
+        System.out.print("Filename to load [default: expenses.tsv]: ");
+        String name = scan.nextLine().trim(); 
+        if (name.isEmpty()) 
+            name = "expenses.tsv";
+        try {
+            List<Expense> loaded = fm.read(Path.of(name)); 
+            manager.replaceAll(loaded); 
+            System.out.println("Loaded " + loaded.size() + " expenses from " + name); 
+        } catch (Exception e) {
+            System.out.println(e.getMessage()); 
+        }
+    
     }
 
+
 }
+
+
