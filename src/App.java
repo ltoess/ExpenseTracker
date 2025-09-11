@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class App {
 
     private static final Path DEFAULT_FILE = Path.of("expenses.tsv");
-
     public static void main(String[] args) {
         ExpenseManager mgr = new ExpenseManager();
         FileManager fm = new FileManager();
@@ -53,34 +52,24 @@ public class App {
                     break;
                 case "0": {
                     try {
-                        fm.save(mgr.getAllExpenses(), DEFAULT_FILE); 
-
+                        fm.save(mgr.getAllExpenses(), DEFAULT_FILE);
                     } catch (Exception e) {
                     System.out.println("Exit save failed: " + e.getMessage()); 
                     }
                     return; 
-                    }
-                    
+                }
                 default: 
                     System.out.println("Invalid choice.");
                     break;
-                    
-                    
-
             }
-
-            
         }
-
-        
-
     }
     
     private static void printMenu() {
         System.out.println();
         System.out.println("==== Expense Tracker ====");
         System.out.println("1) Add expense");
-        System.out.println("2) List expenses");
+        System.out.println("2) List ALL expenses");
         System.out.println("3) Remove expense");
         System.out.println("4) Total by category");
         System.out.println("5) Monthly total");
@@ -89,8 +78,6 @@ public class App {
         System.out.println("0) Exit");
         System.out.print("Choose: ");
     }
-
-
 
     private static void addExpenseFlow(ExpenseManager manager, Scanner scan) {
         try {
@@ -121,12 +108,15 @@ public class App {
         if (all.isEmpty()) {
             System.out.println("No expenses yet.");
             return; 
+        }else {
+            System.out.println();
+            System.out.println("Index | Expense");
+            for (int i = 0; i < all.size(); i++) {
+                System.out.printf("%5d | %s%n", i, all.get(i).toString());
+            }
+            System.out.printf("              Total: $%9.2f%n", manager.getTotal());
         }
-        System.out.println("Index | Expense");
-        for (int i = 0; i < all.size(); i++) {
-            System.out.printf("%5d | %s%n", i, all.get(i).toString());
-        }
-        System.out.printf("              Total: $%9.2f%n", manager.getTotal());
+        
     }
 
     private static void removeExpenseFlow(ExpenseManager manager, Scanner scan) {
