@@ -7,7 +7,7 @@ This project was built to strengthen **object-oriented programming skills** whil
 
 ## Features
 - Add new expenses with amount, category, date, and description.  
-- List expenses in **clean, tabular console output** with aligned columns.  
+- List expenses in **clean, tabular console output**. 
 - Remove expenses by index.  
 - Categorize spending with enums (`FOOD`, `GROCERIES`, `TRANSPORT`, `ENTERTAINMENT`, `UTILITIES`, `OTHER`).  
 - Save and load expense data from a **TSV file**.  
