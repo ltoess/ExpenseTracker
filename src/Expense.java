@@ -90,8 +90,8 @@ public class Expense {
     
 
     public String toString() {
-        return String.format("%s | %s | $%.2f | %s",
-                date, category.name(), amount, description.isEmpty() ? "-" : description);
+        return String.format("%s | $%9.2f | %-14s | %s",
+                date, amount, category.name(), description.isEmpty() ? "-" : description);
     }
 
 
