@@ -141,10 +141,10 @@ public class App {
     }
 
     private static void totalsByCategoryFlow(ExpenseManager manager, Scanner scan) {
-        System.out.print("Category: " + java.util.Arrays.toString(Category.values()) + ":"); 
+        System.out.print("Category: " + java.util.Arrays.toString(Category.values()) + ": "); 
         Category category = Category.fromString(scan.nextLine());
         double total = manager.getTotalByCategory(category); 
-        System.out.printf("Total for %s: $%.2f%n", category.name(), total);
+        System.out.printf("\nTotal for %s: $%.2f%n", category.name(), total);
     }
 
     private static void monthlyTotalFlow(ExpenseManager manager, Scanner scan) {
