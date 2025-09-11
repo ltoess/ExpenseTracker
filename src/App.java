@@ -140,7 +140,6 @@ public class App {
         // sort out the desired category
         List<Expense> all = manager.getAllExpenses();
         List<Expense> sorted = new ArrayList<>(); 
-        
         for(int i = 0; i < all.size(); i++) {
             if (all.get(i).getCategory() == category) {
                 sorted.add(all.get(i));    
@@ -166,7 +165,26 @@ public class App {
             System.out.print("Month (1-12): "); 
             int month = Integer.parseInt(scan.nextLine().trim()); 
             double total = manager.getMonthlyTotal(month, year);
-            System.out.printf("\nTotal for %04d-%02d: $%.2f%n", year, month, total); 
+        // sort out the desired month
+            List<Expense> all = manager.getAllExpenses();
+            List<Expense> sorted = new ArrayList<>(); 
+            for(int i = 0; i < all.size(); i++) {
+                if (all.get(i).getDate().getMonthValue() == month) {
+                    sorted.add(all.get(i));    
+                }
+            }
+
+            if (sorted.isEmpty()) {
+                System.out.println("No expenses in " + year + "-" + month);
+                return; 
+            } else {
+                System.out.println("Index | Expense");
+                for (int i = 0; i < sorted.size(); i++) {
+                        System.out.printf("%5d | %s%n", i, sorted.get(i).toString());
+                }
+            }
+
+            System.out.printf("     Total for %04d-%02d: $%.2f%n", year, month, total); 
         } catch (NumberFormatException e) {
             System.out.println("Invalid year/month."); 
         }
