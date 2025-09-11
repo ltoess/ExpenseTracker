@@ -16,7 +16,7 @@ public class Expense {
     public Expense(double amount, Category cat, String desc, LocalDate date) {
         if (amount < 0) throw new IllegalArgumentException("Amount cannot be negative.");
         this.amount = amount; 
-        this.description = desc;
+        this.description = (description == null) ? "" : description;
         this.category = Objects.requireNonNull(cat, "category");
         this.date = Objects.requireNonNull(date, "date");
     }
