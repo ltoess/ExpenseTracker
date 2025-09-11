@@ -1,5 +1,5 @@
 public enum Category {
-    FOOD, TRANSPORT, ENTERTAINMENT, UTILITIES, OTHER;
+    FOOD, GROCERIES, TRANSPORT, ENTERTAINMENT, UTILITIES, OTHER;
 
     public static Category fromString(String s) {
         if (s == null) return OTHER;
