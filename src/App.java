@@ -125,7 +125,7 @@ public class App {
         for (int i = 0; i < all.size(); i++) {
             System.out.printf("%5d | %s%n", i, all.get(i).toString());
         }
-        System.out.printf("Total: $%.2f%n", manager.getTotal());
+        System.out.printf("              Total: $%9.2f%n", manager.getTotal());
     }
 
     private static void removeExpenseFlow(ExpenseManager manager, Scanner scan) {
@@ -144,6 +144,7 @@ public class App {
         System.out.print("Category: " + java.util.Arrays.toString(Category.values()) + ": "); 
         Category category = Category.fromString(scan.nextLine());
         double total = manager.getTotalByCategory(category); 
+
         System.out.printf("\nTotal for %s: $%.2f%n", category.name(), total);
     }
 
