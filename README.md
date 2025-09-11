@@ -17,10 +17,8 @@ This project was built to strengthen **object-oriented programming skills** whil
 ---
 
 ## Technologies
-- Java 17 (Adoptium)  
-- Core Java libraries (`java.util`, `java.time`, `java.io`)  
-- No external dependencies  
-
+- Java 17 (Adoptium)
+  
 ---
 
 ## Getting Started
