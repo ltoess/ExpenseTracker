@@ -1,6 +1,7 @@
 
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -143,8 +144,28 @@ public class App {
     private static void totalsByCategoryFlow(ExpenseManager manager, Scanner scan) {
         System.out.print("Category: " + java.util.Arrays.toString(Category.values()) + ": "); 
         Category category = Category.fromString(scan.nextLine());
+        System.out.println();
         double total = manager.getTotalByCategory(category); 
 
+        // sort out the desired category
+        List<Expense> all = manager.getAllExpenses();
+        List<Expense> sorted = new ArrayList<>(); 
+        
+        for(int i = 0; i < all.size(); i++) {
+            if (all.get(i).getCategory() == category) {
+                sorted.add(all.get(i));    
+            }
+        }
+
+        if (sorted.isEmpty()) {
+            System.out.println("No expenses in " + category);
+            return; 
+        } else {
+            System.out.println("Index | Expense");
+            for (int i = 0; i < sorted.size(); i++) {
+                    System.out.printf("%5d | %s%n", i, sorted.get(i).toString());
+            }
+        }
         System.out.printf("\nTotal for %s: $%.2f%n", category.name(), total);
     }
 
