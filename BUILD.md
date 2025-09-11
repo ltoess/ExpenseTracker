@@ -11,8 +11,8 @@ These instructions let anyone clone the repo and run the app locally.
 
 ```bash
 # 1) Clone
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
+git clone https://github.com/ltoess/ExpenseTracker.git
+cd ExpenseTracker
 
 # 2) Build (Unix/macOS/Linux)
 ./build.sh
@@ -25,8 +25,8 @@ On Windows (PowerShell or Command Prompt):
 
 ```bat
 REM 1) Clone
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
+git clone https://github.com/ltoess/ExpenseTracker.git
+cd ExpenseTracker
 
 REM 2) Build
 build.bat
@@ -44,8 +44,6 @@ java -jar ExpenseTracker.jar
 - Compiles all sources in `src/` to `out/`
 - Packages classes into `ExpenseTracker.jar`
 - Sets the JAR entry point to the `App` class (`Main-Class: App`)
-
-If you moved code into a package (e.g., `package com.example.expenses;`), update the **`MAIN_CLASS`** variable in the scripts to `com.example.expenses.App`.
 
 ---
 
