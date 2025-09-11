@@ -27,6 +27,39 @@ public class App {
 
         while(true) {
             printMenu();
+            String choice = scan.nextLine().trim(); 
+            switch(choice) {
+                case "1": 
+                    addExpenseFlow(mgr,scan); 
+                case "2": 
+                    listExpenses(mgr); 
+                case "3": 
+                    removeExpenseFlow(mgr,scan);
+                case "4": 
+                    totalsByCategoryFlow(mgr, scan); 
+                case "5": 
+                    monthlyTotalFlow(mgr, scan); 
+                case "6": 
+                    saveFlow(mgr, fm, scan); 
+                case "7": 
+                    loadFlow(mgr, fm, scan); 
+                case "0": {
+                    try {
+                        fm.save(mgr.getAllExpenses(), DEFAULT_FILE); 
+
+                    } catch (Exception e) {
+                    System.out.println("Exit save failed: " + e.getMessage()); 
+                    }
+                    return; 
+                }
+                default: 
+                    System.out.println("Invalid choice.");
+                    
+                    
+
+            }
+
+            
         }
 
         
@@ -46,6 +79,8 @@ public class App {
         System.out.println("0) Exit");
         System.out.print("Choose: ");
     }
+
+
 
     private static void addExpenseFlow(ExpenseManager manager, Scanner scan) {
         try {
@@ -101,7 +136,7 @@ public class App {
         double total = manager.getTotalByCategory(category); 
     }
 
-    private static void montlyTotalFlow(ExpenseManager manager, Scanner scan) {
+    private static void monthlyTotalFlow(ExpenseManager manager, Scanner scan) {
         try {
             System.out.print("Year: (e.g., 2025): "); 
             int year = Integer.parseInt(scan.nextLine().trim());
