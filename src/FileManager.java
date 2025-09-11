@@ -10,7 +10,8 @@ import java.util.List;
 
 public class FileManager {
 
-    // simplifies file methods and puts them in their own class 
+    // simplifies file methods and puts them in their own class
+    // simple read and write methods, both in TSV format
 
     private static final String HEADER = "amount\tcategory\tdate\tdescription";
 
@@ -24,7 +25,6 @@ public class FileManager {
             }
         } catch(IOException e) {
             System.out.println("File not found");
-
         }
     }
 
@@ -48,9 +48,7 @@ public class FileManager {
             }
         } catch(IOException e) {
             System.out.println("File not found");
-
         }
-
         return list; 
     }
 

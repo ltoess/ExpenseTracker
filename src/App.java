@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+// driver class
 public class App {
 
     private static final Path DEFAULT_FILE = Path.of("expenses.tsv");
@@ -25,6 +26,7 @@ public class App {
             System.out.println("Couldn't load existing file " + "(" + e.getMessage() + ")");
         }
 
+        // continuous UI loop
         while(true) {
             printMenu();
             String choice = scan.nextLine().trim(); 
@@ -65,6 +67,7 @@ public class App {
         }
     }
     
+    // UI options
     private static void printMenu() {
         System.out.println();
         System.out.println("==== Expense Tracker ====");
@@ -79,6 +82,7 @@ public class App {
         System.out.print("Choose: ");
     }
 
+    // expense intake 
     private static void addExpenseFlow(ExpenseManager manager, Scanner scan) {
         try {
             System.out.print("Amount (e.g., 12.50): ");
@@ -103,6 +107,7 @@ public class App {
         }
     }
 
+    // lists ALL expenses
     private static void listExpenses(ExpenseManager manager) {
         List<Expense> all = manager.getAllExpenses(); 
         if (all.isEmpty()) {
@@ -119,6 +124,7 @@ public class App {
         
     }
 
+    // removes expense at specified index
     private static void removeExpenseFlow(ExpenseManager manager, Scanner scan) {
         listExpenses(manager);
         System.out.print("Enter index to remove: ");
@@ -131,6 +137,7 @@ public class App {
         }
     }
 
+    // list expenses from a category 
     private static void totalsByCategoryFlow(ExpenseManager manager, Scanner scan) {
         System.out.print("Category: " + java.util.Arrays.toString(Category.values()) + ": "); 
         Category category = Category.fromString(scan.nextLine());
@@ -146,6 +153,7 @@ public class App {
             }
         }
 
+        // checks to make sure sorted expenses exist before printing header
         if (sorted.isEmpty()) {
             System.out.println("No expenses in " + category);
             return; 
@@ -158,6 +166,7 @@ public class App {
         System.out.printf("\nTotal for %s: $%.2f%n", category.name(), total);
     }
 
+    // list expenses from a month
     private static void monthlyTotalFlow(ExpenseManager manager, Scanner scan) {
         try {
             System.out.print("Year: (e.g., 2025): "); 
@@ -165,7 +174,8 @@ public class App {
             System.out.print("Month (1-12): "); 
             int month = Integer.parseInt(scan.nextLine().trim()); 
             double total = manager.getMonthlyTotal(month, year);
-        // sort out the desired month
+
+            // sort out the desired month
             List<Expense> all = manager.getAllExpenses();
             List<Expense> sorted = new ArrayList<>(); 
             for(int i = 0; i < all.size(); i++) {
@@ -173,8 +183,9 @@ public class App {
                     sorted.add(all.get(i));    
                 }
             }
-
-            if (sorted.isEmpty()) {
+            
+            // checks to make sure sorted expenses exist before printing header
+            if (sorted.isEmpty()) {    
                 System.out.println("No expenses in " + year + "-" + month);
                 return; 
             } else {

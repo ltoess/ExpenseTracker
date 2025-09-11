@@ -6,6 +6,7 @@ import java.util.List;
 public class ExpenseManager {
 
     // stores and manages a collection of expenses
+    // contains methods to add, remove, and access expenses sorted in various ways
 
     private final List<Expense> expenses = new ArrayList<>();  
     
@@ -14,7 +15,8 @@ public class ExpenseManager {
     }
 
     public Boolean removeExpense(int i) {
-        if(i < 0 || i >= expenses.size()) return false; 
+        if(i < 0 || i >= expenses.size()) 
+            return false; 
         expenses.remove(i);
         return true; 
     }
@@ -25,7 +27,8 @@ public class ExpenseManager {
 
     public void replaceAll(List<Expense> newExpenses) {
         expenses.clear();
-        if (newExpenses != null) expenses.addAll(newExpenses);
+        if (newExpenses != null) 
+            expenses.addAll(newExpenses);
     }
     
     public double getMonthlyTotal(int month, int year) {
