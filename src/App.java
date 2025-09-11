@@ -31,18 +31,25 @@ public class App {
             switch(choice) {
                 case "1": 
                     addExpenseFlow(mgr,scan); 
+                    break; 
                 case "2": 
                     listExpenses(mgr); 
+                    break;
                 case "3": 
                     removeExpenseFlow(mgr,scan);
+                    break;
                 case "4": 
                     totalsByCategoryFlow(mgr, scan); 
+                    break;
                 case "5": 
                     monthlyTotalFlow(mgr, scan); 
+                    break;
                 case "6": 
-                    saveFlow(mgr, fm, scan); 
+                    saveFlow(mgr, fm, scan);
+                    break; 
                 case "7": 
                     loadFlow(mgr, fm, scan); 
+                    break;
                 case "0": {
                     try {
                         fm.save(mgr.getAllExpenses(), DEFAULT_FILE); 
@@ -51,9 +58,11 @@ public class App {
                     System.out.println("Exit save failed: " + e.getMessage()); 
                     }
                     return; 
-                }
+                    }
+                    
                 default: 
                     System.out.println("Invalid choice.");
+                    break;
                     
                     
 
@@ -96,6 +105,7 @@ public class App {
 
             System.out.print("Description (optional): ");
             String desc = scan.nextLine();
+            System.out.println();
 
             Expense e = new Expense(amount, category, desc, date);
             manager.addExpense(e);
@@ -134,6 +144,7 @@ public class App {
         System.out.print("Category: " + java.util.Arrays.toString(Category.values()) + ":"); 
         Category category = Category.fromString(scan.nextLine());
         double total = manager.getTotalByCategory(category); 
+        System.out.printf("Total for %s: $%.2f%n", category.name(), total);
     }
 
     private static void monthlyTotalFlow(ExpenseManager manager, Scanner scan) {
@@ -143,7 +154,7 @@ public class App {
             System.out.print("Month (1-12): "); 
             int month = Integer.parseInt(scan.nextLine().trim()); 
             double total = manager.getMonthlyTotal(month, year);
-            System.out.printf("Total for %04d-%02d: $%.2f%n", year, month, total); 
+            System.out.printf("\nTotal for %04d-%02d: $%.2f%n", year, month, total); 
         } catch (NumberFormatException e) {
             System.out.println("Invalid year/month."); 
         }
