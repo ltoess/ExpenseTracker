@@ -1,7 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
 
-REM Change this if your App is in a package, e.g. com.example.expenses.App
 set MAIN_CLASS=App
 
 REM Clean & prepare output
